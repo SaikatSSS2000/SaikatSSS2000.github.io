@@ -1,0 +1,17 @@
+{
+  "name": "Saikat Sarkar Shraban",
+  "email": "your@email.com",
+  "education": [
+    {
+      "degree": "BSc in CSE",
+      "institution": "Your University",
+      "year": "2026"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Bus Prediction System",
+      "description": "Using deep learning on transport data"
+    }
+  ]
+}
