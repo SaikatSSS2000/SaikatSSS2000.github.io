@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Saikat Sarkar Shraban - CV</title>
+  <title>Saikat Sarkar Shraban</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="cv"></div>
+<div id="app"></div>
 
 <script>
 fetch('cv.json')
@@ -14,55 +14,47 @@ fetch('cv.json')
 .then(data => {
 
   let html = `
-    <h1>${data.name}</h1>
-    <p>${data.email}</p>
-    <p>${data.bio}</p>
+    <div class="container">
 
-    <h2>RESEARCH INTERESTS</h2>
-    <ul>
-      ${data.research_interests.map(r =>
-        `<li>${r}</li>`
-      ).join('')}
-    </ul>
+      <div class="left">
+        <h1>${data.name}</h1>
+        <p class="email">${data.email}</p>
 
-    <h2>EDUCATION</h2>
-    <ul>
-      ${data.education.map(e =>
-        `<li>
-          <b>${e.degree}</b>, ${e.institution} (${e.year})<br>
-          ${e.details}
-        </li>`
-      ).join('')}
-    </ul>
+        <p class="bio">${data.bio}</p>
 
-    <h2>EXPERIENCE</h2>
-    <ul>
-      ${data.experience.map(e =>
-        `<li>
-          <b>${e.role}</b>, ${e.place} (${e.time})
+        <h2>Education</h2>
+        ${data.education.map(e => `
+          <p><b>${e.degree}</b>, ${e.institution} (${e.year})<br>${e.details}</p>
+        `).join('')}
+
+        <h2>Experience</h2>
+        ${data.experience.map(e => `
+          <p><b>${e.role}</b>, ${e.place} (${e.time})</p>
           <ul>
             ${e.details.map(d => `<li>${d}</li>`).join('')}
           </ul>
-        </li>`
-      ).join('')}
-    </ul>
+        `).join('')}
 
-    <h2>PUBLICATIONS</h2>
-    <ul>
-      ${data.publications.map(p =>
-        `<li><b>[${p.type}]</b> ${p.text}</li>`
-      ).join('')}
-    </ul>
+        <h2>Publications</h2>
+        <ul>
+          ${data.publications.map(p => `<li>${p.text}</li>`).join('')}
+        </ul>
 
-    <h2>SKILLS</h2>
-    <ul>
-      ${data.skills.map(s =>
-        `<li>${s}</li>`
-      ).join('')}
-    </ul>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h3>Research Focus</h3>
+          <ul>
+            ${data.research_interests.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+
+    </div>
   `;
 
-  document.getElementById('cv').innerHTML = html;
+  document.getElementById("app").innerHTML = html;
 });
 </script>
 
