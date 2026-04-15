@@ -1,17 +1,85 @@
 {
   "name": "Saikat Sarkar Shraban",
-  "email": "your@email.com",
+  "email": "shrabansbn@gmail.com",
+  "bio": "Research Assistant working on intelligent transportation systems, focusing on machine learning, travel behavior analysis, and data-driven mobility modeling.",
+
   "education": [
     {
-      "degree": "BSc in CSE",
-      "institution": "Your University",
-      "year": "2026"
+      "degree": "B.Sc. in Civil Engineering",
+      "institution": "Sylhet Engineering College, SUST",
+      "year": "2020–2025",
+      "details": "CGPA: 3.45/4.00"
+    },
+    {
+      "degree": "Higher Secondary Certificate",
+      "institution": "Sylhet Govt. College",
+      "year": "2016–2019",
+      "details": "GPA: 4.75/5.00"
+    },
+    {
+      "degree": "Secondary School Certificate",
+      "institution": "Sylhet Govt. Pilot High School",
+      "year": "2014–2016",
+      "details": "GPA: 5.00/5.00"
     }
   ],
-  "projects": [
+
+  "experience": [
     {
-      "title": "Bus Prediction System",
-      "description": "Using deep learning on transport data"
+      "role": "Research Assistant",
+      "place": "B'Deshi Emerging Research Lab, Malaysia",
+      "time": "Sep 2023 – Oct 2025",
+      "details": [
+        "Traffic simulation using VISSIM",
+        "Machine learning with NHTS & GTFS datasets",
+        "Bibliometric analysis on ML in transportation",
+        "Systematic literature review",
+        "Paper writing and conference presentations"
+      ]
     }
+  ],
+
+  "research_interests": [
+    "Intelligent Transportation Systems",
+    "Machine Learning",
+    "Travel Behavior Analysis",
+    "Traffic Safety",
+    "Data-driven Mobility"
+  ],
+
+  "publications": [
+    {
+      "type": "Conference",
+      "text": "Public Transport Ridership Forecasting Using Machine Learning (ICCIT 2024)"
+    },
+    {
+      "type": "Conference",
+      "text": "Gasoline Vehicle Ownership in the US: A Machine Learning Approach (IICAIET 2025)"
+    },
+    {
+      "type": "Journal",
+      "text": "Post-COVID Vehicle Ownership Dynamics (Future Transportation, 2025)"
+    },
+    {
+      "type": "Journal",
+      "text": "Machine Learning in Intelligent Transport Systems: Review (Discover Civil Engineering, 2025)"
+    },
+    {
+      "type": "Journal",
+      "text": "Metering Methods in Roundabouts using VISSIM (ASEAN Journal, 2025)"
+    },
+    {
+      "type": "Journal",
+      "text": "ML in Travel Mode Choice Studies (Results in Engineering, 2025)"
+    }
+  ],
+
+  "skills": [
+    "Python (NumPy, Pandas, Scikit-Learn)",
+    "R (bibliometrix, ggplot2)",
+    "VISSIM, SUMO, SIDRA",
+    "SPSS",
+    "LaTeX",
+    "Microsoft Office"
   ]
 }
