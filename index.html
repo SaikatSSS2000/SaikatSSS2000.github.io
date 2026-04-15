@@ -6,59 +6,73 @@
 </head>
 <body>
 
-<div class="container">
-
-  <div class="left" id="left"></div>
-
-  <div class="right">
-    <div class="card" id="right"></div>
+<header class="nav">
+  <h2>Saikat Sarkar Shraban</h2>
+  <div>
+    <button onclick="showTab('overview')">Overview</button>
+    <button onclick="showTab('publications')">Publications</button>
   </div>
+</header>
 
-</div>
+<div id="overview" class="tab active"></div>
+<div id="publications" class="tab"></div>
 
 <script>
+let data;
+
 fetch('cv.json')
 .then(res => res.json())
-.then(data => {
-
-  // LEFT SIDE
-  let leftHTML = `
-    <h1>${data.name}</h1>
-    <p class="email">${data.email}</p>
-    <p class="bio">${data.bio}</p>
-
-    <h2>Education</h2>
-    ${data.education.map(e => `
-      <p><b>${e.degree}</b>, ${e.institution} (${e.year})<br>${e.details}</p>
-    `).join('')}
-
-    <h2>Experience</h2>
-    ${data.experience.map(e => `
-      <p><b>${e.role}</b>, ${e.place} (${e.time})</p>
-      <ul>
-        ${e.details.map(d => `<li>${d}</li>`).join('')}
-      </ul>
-    `).join('')}
-
-    <h2>Publications</h2>
-    <ul>
-      ${data.publications.map(p => `<li>${p.text}</li>`).join('')}
-    </ul>
-  `;
-
-  document.getElementById("left").innerHTML = leftHTML;
-
-  // RIGHT SIDE
-  let rightHTML = `
-    <h3>Research Focus</h3>
-    <ul>
-      ${data.research_interests.map(r => `<li>${r}</li>`).join('')}
-    </ul>
-  `;
-
-  document.getElementById("right").innerHTML = rightHTML;
-
+.then(d => {
+  data = d;
+  loadOverview();
+  loadPublications();
 });
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+}
+
+function loadOverview() {
+  let html = `
+    <div class="container">
+      <div class="left">
+        <h1>${data.name}</h1>
+        <p>${data.email}</p>
+        <p>${data.bio}</p>
+
+        <h2>Education</h2>
+        ${data.education.map(e =>
+          `<p><b>${e.degree}</b>, ${e.institution} (${e.year})</p>`
+        ).join('')}
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h3>Research Focus</h3>
+          <ul>
+            ${data.research_interests.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById("overview").innerHTML = html;
+}
+
+function loadPublications() {
+  let html = `
+    <div class="container">
+      <h1>Publications</h1>
+      <ul>
+        ${data.publications.map(p =>
+          `<li>${p.text}</li>`
+        ).join('')}
+      </ul>
+    </div>
+  `;
+  document.getElementById("publications").innerHTML = html;
+}
 </script>
 
 </body>
