@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Academic CV</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="cv"></div>
+
+<script>
+fetch('cv.json')
+  .then(res => res.json())
+  .then(data => {
+    let html = `
+      <h1>${data.name}</h1>
+      <p>${data.email}</p>
+
+      <h2>Education</h2>
+      <ul>
+        ${data.education.map(e => 
+          `<li>${e.degree} - ${e.institution} (${e.year})</li>`
+        ).join('')}
+      </ul>
+
+      <h2>Projects</h2>
+      <ul>
+        ${data.projects.map(p => 
+          `<li><b>${p.title}</b>: ${p.description}</li>`
+        ).join('')}
+      </ul>
+    `;
+    document.getElementById('cv').innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
