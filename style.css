@@ -1,8 +1,21 @@
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: Arial;
   background: #f5f5f5;
-  color: #222;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
 }
 
 .container {
@@ -21,34 +34,17 @@ body {
   padding-left: 40px;
 }
 
-h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.email {
-  color: #666;
-}
-
-.bio {
-  margin: 20px 0;
-}
-
-h2 {
-  margin-top: 30px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
 .card {
   background: #8b1e2d;
   color: white;
-  padding: 25px;
+  padding: 20px;
   border-radius: 10px;
-  position: sticky;
-  top: 40px;
 }
 
-ul {
-  padding-left: 20px;
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
 }
