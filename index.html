@@ -6,55 +6,58 @@
 </head>
 <body>
 
-<div id="app"></div>
+<div class="container">
+
+  <div class="left" id="left"></div>
+
+  <div class="right">
+    <div class="card" id="right"></div>
+  </div>
+
+</div>
 
 <script>
 fetch('cv.json')
 .then(res => res.json())
 .then(data => {
 
-  let html = `
-    <div class="container">
+  // LEFT SIDE
+  let leftHTML = `
+    <h1>${data.name}</h1>
+    <p class="email">${data.email}</p>
+    <p class="bio">${data.bio}</p>
 
-      <div class="left">
-        <h1>${data.name}</h1>
-        <p class="email">${data.email}</p>
+    <h2>Education</h2>
+    ${data.education.map(e => `
+      <p><b>${e.degree}</b>, ${e.institution} (${e.year})<br>${e.details}</p>
+    `).join('')}
 
-        <p class="bio">${data.bio}</p>
+    <h2>Experience</h2>
+    ${data.experience.map(e => `
+      <p><b>${e.role}</b>, ${e.place} (${e.time})</p>
+      <ul>
+        ${e.details.map(d => `<li>${d}</li>`).join('')}
+      </ul>
+    `).join('')}
 
-        <h2>Education</h2>
-        ${data.education.map(e => `
-          <p><b>${e.degree}</b>, ${e.institution} (${e.year})<br>${e.details}</p>
-        `).join('')}
-
-        <h2>Experience</h2>
-        ${data.experience.map(e => `
-          <p><b>${e.role}</b>, ${e.place} (${e.time})</p>
-          <ul>
-            ${e.details.map(d => `<li>${d}</li>`).join('')}
-          </ul>
-        `).join('')}
-
-        <h2>Publications</h2>
-        <ul>
-          ${data.publications.map(p => `<li>${p.text}</li>`).join('')}
-        </ul>
-
-      </div>
-
-      <div class="right">
-        <div class="card">
-          <h3>Research Focus</h3>
-          <ul>
-            ${data.research_interests.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-
-    </div>
+    <h2>Publications</h2>
+    <ul>
+      ${data.publications.map(p => `<li>${p.text}</li>`).join('')}
+    </ul>
   `;
 
-  document.getElementById("app").innerHTML = html;
+  document.getElementById("left").innerHTML = leftHTML;
+
+  // RIGHT SIDE
+  let rightHTML = `
+    <h3>Research Focus</h3>
+    <ul>
+      ${data.research_interests.map(r => `<li>${r}</li>`).join('')}
+    </ul>
+  `;
+
+  document.getElementById("right").innerHTML = rightHTML;
+
 });
 </script>
 
