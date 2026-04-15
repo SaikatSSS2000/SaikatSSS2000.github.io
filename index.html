@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CV</title>
+  <title>Saikat Sarkar Shraban - CV</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,21 +16,41 @@ fetch('cv.json')
   let html = `
     <h1>${data.name}</h1>
     <p>${data.email}</p>
+    <p>${data.bio}</p>
 
     <h2>RESEARCH INTERESTS</h2>
-    <p>${data.bio}</p>
+    <ul>
+      ${data.research_interests.map(r =>
+        `<li>${r}</li>`
+      ).join('')}
+    </ul>
 
     <h2>EDUCATION</h2>
     <ul>
       ${data.education.map(e =>
-        `<li>${e.degree}, ${e.institution} (${e.year})</li>`
+        `<li>
+          <b>${e.degree}</b>, ${e.institution} (${e.year})<br>
+          ${e.details}
+        </li>`
       ).join('')}
     </ul>
 
-    <h2>PROJECTS</h2>
+    <h2>EXPERIENCE</h2>
     <ul>
-      ${data.projects.map(p =>
-        `<li><b>${p.title}</b>: ${p.description}</li>`
+      ${data.experience.map(e =>
+        `<li>
+          <b>${e.role}</b>, ${e.place} (${e.time})
+          <ul>
+            ${e.details.map(d => `<li>${d}</li>`).join('')}
+          </ul>
+        </li>`
+      ).join('')}
+    </ul>
+
+    <h2>PUBLICATIONS</h2>
+    <ul>
+      ${data.publications.map(p =>
+        `<li><b>[${p.type}]</b> ${p.text}</li>`
       ).join('')}
     </ul>
 
